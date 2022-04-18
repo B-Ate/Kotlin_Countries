@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Projects\\Android\\KotlinCountries\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_feed.xml",
+        "source": "D:\\Projects\\Android\\KotlinCountries\\app\\src\\main\\res\\layout\\fragment_feed.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\KotlinCountries\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_country.xml",
+        "source": "D:\\Projects\\Android\\KotlinCountries\\app\\src\\main\\res\\layout\\fragment_country.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\KotlinCountries\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_county.xml",
+        "source": "D:\\Projects\\Android\\KotlinCountries\\app\\src\\main\\res\\layout\\item_county.xml"
+    }
+]
