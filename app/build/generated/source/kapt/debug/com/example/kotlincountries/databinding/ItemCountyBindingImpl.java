@@ -13,10 +13,7 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
         sIncludes = null;
-        sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.imageView, 1);
-        sViewsWithIds.put(R.id.name, 2);
-        sViewsWithIds.put(R.id.region, 3);
+        sViewsWithIds = null;
     }
     // views
     @NonNull
@@ -35,8 +32,11 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[3]
             );
+        this.imageView.setTag(null);
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
+        this.name.setTag(null);
+        this.region.setTag(null);
         setRootTag(root);
         // listeners
         invalidateAll();
@@ -45,7 +45,7 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x1L;
+                mDirtyFlags = 0x2L;
         }
         requestRebind();
     }
@@ -63,7 +63,22 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
     @Override
     public boolean setVariable(int variableId, @Nullable Object variable)  {
         boolean variableSet = true;
+        if (BR.country == variableId) {
+            setCountry((com.example.kotlincountries.model.Country) variable);
+        }
+        else {
+            variableSet = false;
+        }
             return variableSet;
+    }
+
+    public void setCountry(@Nullable com.example.kotlincountries.model.Country Country) {
+        this.mCountry = Country;
+        synchronized(this) {
+            mDirtyFlags |= 0x1L;
+        }
+        notifyPropertyChanged(BR.country);
+        super.requestRebind();
     }
 
     @Override
@@ -80,14 +95,40 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
+        com.example.kotlincountries.model.Country country = mCountry;
+        java.lang.String countryImageUrl = null;
+        java.lang.String countryCountryName = null;
+        java.lang.String countryCountryRegion = null;
+
+        if ((dirtyFlags & 0x3L) != 0) {
+
+
+
+                if (country != null) {
+                    // read country.imageUrl
+                    countryImageUrl = country.getImageUrl();
+                    // read country.countryName
+                    countryCountryName = country.getCountryName();
+                    // read country.countryRegion
+                    countryCountryRegion = country.getCountryRegion();
+                }
+        }
         // batch finished
+        if ((dirtyFlags & 0x3L) != 0) {
+            // api target 1
+
+            com.example.kotlincountries.util.UtilKt.downloadImage(this.imageView, countryImageUrl);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.name, countryCountryName);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.region, countryCountryRegion);
+        }
     }
     // Listener Stub Implementations
     // callback impls
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): null
+        flag 0 (0x1L): country
+        flag 1 (0x2L): null
     flag mapping end*/
     //end
 }

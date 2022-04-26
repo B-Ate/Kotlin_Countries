@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import com.example.kotlincountries.R;
+import com.example.kotlincountries.model.Country;
 import java.lang.Deprecated;
 import java.lang.Object;
 
@@ -24,12 +26,22 @@ public abstract class ItemCountyBinding extends ViewDataBinding {
   @NonNull
   public final TextView region;
 
+  @Bindable
+  protected Country mCountry;
+
   protected ItemCountyBinding(Object _bindingComponent, View _root, int _localFieldCount,
       ImageView imageView, TextView name, TextView region) {
     super(_bindingComponent, _root, _localFieldCount);
     this.imageView = imageView;
     this.name = name;
     this.region = region;
+  }
+
+  public abstract void setCountry(@Nullable Country country);
+
+  @Nullable
+  public Country getCountry() {
+    return mCountry;
   }
 
   @NonNull
