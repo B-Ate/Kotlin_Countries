@@ -1,6 +1,7 @@
 package com.example.kotlincountries.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlincountries.model.Country
@@ -19,6 +20,7 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
     private val countryAPIService = CountryAPIService()
     private val disposable = CompositeDisposable()
     private val customPreferences = CustomSharedPreferences(getApplication())
+    private var refreshTime = 10 * 60 * 1000 * 1000 * 1000L //10dk verecek
 
     val countries = MutableLiveData<List<Country>>()
     val countryError = MutableLiveData<Boolean>()
@@ -26,7 +28,28 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
 
     fun refreshData()
     {
+        val updateTime = customPreferences.getTime()
+
+        if (updateTime != null  && updateTime != 0L && System.nanoTime() - updateTime < refreshTime)
+        {
+            getDataFromSQLite()
+        }
+        else
+        {
+            getDataFromAPI()
+        }
+    }
+
+    fun refreshFromAPI(){
         getDataFromAPI()
+    }
+
+    private fun getDataFromSQLite(){
+        launch {
+            val countries = CountryDatabase(getApplication()).countryDao().getAllCountries()
+            showCountries(countries)
+            Toast.makeText(getApplication(), "Countries From SQLite", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun getDataFromAPI(){
@@ -38,6 +61,8 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
                 .subscribeWith(object : DisposableSingleObserver<List<Country>>(){
                     override fun onSuccess(t: List<Country>) {
                         storeInSQLite(t)
+                        showCountries(t)
+                        Toast.makeText(getApplication(), "Countries From API", Toast.LENGTH_LONG).show()
                     }
 
                     override fun onError(e: Throwable) {
@@ -70,6 +95,12 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
         }
 
         customPreferences.saveTime(System.nanoTime())
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        disposable.clear()
     }
 
 }

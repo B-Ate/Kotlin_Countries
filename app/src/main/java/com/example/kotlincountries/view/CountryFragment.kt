@@ -1,10 +1,12 @@
 package com.example.kotlincountries.view
 
+import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -12,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlincountries.R
+import com.example.kotlincountries.util.downloadFromUrl
+import com.example.kotlincountries.util.placeholderProgressBar
 import com.example.kotlincountries.view.CountryFragmentArgs
 import com.example.kotlincountries.viewmodel.CountryViewModel
 import com.example.kotlincountries.viewmodel.FeedViewModel
@@ -38,12 +42,12 @@ class CountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(CountryViewModel::class.java)
-        viewModel.getDataFromRoom()
-
         arguments?.let {
             countryUuid = CountryFragmentArgs.fromBundle(it).countryUuid
         }
+
+        viewModel = ViewModelProviders.of(this).get(CountryViewModel::class.java)
+        viewModel.getDataFromRoom(countryUuid)
 
         observeLiveData()
     }
@@ -65,6 +69,12 @@ class CountryFragment : Fragment() {
 
                 val countryRegion : TextView = requireView().findViewById(R.id.countryRegion)
                 countryRegion.text = country.countryRegion
+
+                val countryImage : ImageView = requireView().findViewById(R.id.countryImage)
+
+                context?.let{
+                    countryImage.downloadFromUrl(country.imageUrl, placeholderProgressBar(it))
+                }
             }
         })
     }
