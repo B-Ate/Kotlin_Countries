@@ -30,41 +30,40 @@
 20-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:11:9-54
 21        android:supportsRtl="true"
 21-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:12:9-35
-22        android:testOnly="true"
-23        android:theme="@style/Theme.KotlinCountries" >
-23-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:13:9-53
-24        <activity android:name="com.example.kotlincountries.view.MainActivity" >
-24-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:14:9-20:20
-24-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:14:19-52
-25            <intent-filter>
-25-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:15:13-19:29
-26                <action android:name="android.intent.action.MAIN" />
-26-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:16:17-69
-26-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:16:25-66
-27
-28                <category android:name="android.intent.category.LAUNCHER" />
-28-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:18:17-77
-28-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:18:27-74
-29            </intent-filter>
-30        </activity>
-31
-32        <service
-32-->[androidx.room:room-runtime:2.2.3] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\189f67aec0eef82e6cfcc5c82d10ad4b\room-runtime-2.2.3\AndroidManifest.xml:25:9-27:40
-33            android:name="androidx.room.MultiInstanceInvalidationService"
-33-->[androidx.room:room-runtime:2.2.3] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\189f67aec0eef82e6cfcc5c82d10ad4b\room-runtime-2.2.3\AndroidManifest.xml:26:13-74
-34            android:exported="false" />
-34-->[androidx.room:room-runtime:2.2.3] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\189f67aec0eef82e6cfcc5c82d10ad4b\room-runtime-2.2.3\AndroidManifest.xml:27:13-37
-35
-36        <provider
-36-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-37            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-37-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-38            android:authorities="com.example.kotlincountries.lifecycle-process"
-38-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-39            android:exported="false"
-39-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-40            android:multiprocess="true" />
-40-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-41    </application>
-42
-43</manifest>
+22        android:theme="@style/Theme.KotlinCountries" >
+22-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:13:9-53
+23        <activity android:name="com.example.kotlincountries.view.MainActivity" >
+23-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:14:9-20:20
+23-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:14:19-52
+24            <intent-filter>
+24-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:15:13-19:29
+25                <action android:name="android.intent.action.MAIN" />
+25-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:16:17-69
+25-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:16:25-66
+26
+27                <category android:name="android.intent.category.LAUNCHER" />
+27-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:18:17-77
+27-->D:\Projects\Android\KotlinCountries\app\src\main\AndroidManifest.xml:18:27-74
+28            </intent-filter>
+29        </activity>
+30
+31        <service
+31-->[androidx.room:room-runtime:2.2.3] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\189f67aec0eef82e6cfcc5c82d10ad4b\room-runtime-2.2.3\AndroidManifest.xml:25:9-27:40
+32            android:name="androidx.room.MultiInstanceInvalidationService"
+32-->[androidx.room:room-runtime:2.2.3] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\189f67aec0eef82e6cfcc5c82d10ad4b\room-runtime-2.2.3\AndroidManifest.xml:26:13-74
+33            android:exported="false" />
+33-->[androidx.room:room-runtime:2.2.3] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\189f67aec0eef82e6cfcc5c82d10ad4b\room-runtime-2.2.3\AndroidManifest.xml:27:13-37
+34
+35        <provider
+35-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+36            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+36-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+37            android:authorities="com.example.kotlincountries.lifecycle-process"
+37-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+38            android:exported="false"
+38-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+39            android:multiprocess="true" />
+39-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\burak\.gradle\caches\transforms-2\files-2.1\7dd160d6aa3b45941d4fe7120bd91985\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+40    </application>
+41
+42</manifest>

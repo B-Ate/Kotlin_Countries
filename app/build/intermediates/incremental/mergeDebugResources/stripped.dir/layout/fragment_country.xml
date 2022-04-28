@@ -2,6 +2,12 @@
 
                                                    
 
+    
+                 
+                          
+                                                               
+           
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,6 +16,7 @@
         <ImageView
             android:id="@+id/countryImage"
             android:layout_alignParentTop="true"
+            android:tag="binding_1"                  
             android:scaleType="fitCenter"
             android:minHeight="200dp"
             android:paddingTop="10dp"
@@ -23,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/countryImage"
+            android:tag="binding_2"              
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
@@ -33,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/countryName"
+            android:tag="binding_3"                 
             android:textSize="16sp"
             android:layout_centerHorizontal="true"
             android:padding="7dp"></TextView>
@@ -42,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/countryCapital"
+            android:tag="binding_4"                
             android:textSize="16sp"
             android:layout_centerHorizontal="true"
             android:padding="7dp"></TextView>
@@ -51,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/countryRegion"
+            android:tag="binding_5"                  
             android:textSize="16sp"
             android:layout_centerHorizontal="true"
             android:padding="7dp"></TextView>
@@ -60,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/countryCurrency"
+            android:tag="binding_6"                  
             android:textSize="16sp"
             android:layout_centerHorizontal="true"
             android:padding="7dp"></TextView>

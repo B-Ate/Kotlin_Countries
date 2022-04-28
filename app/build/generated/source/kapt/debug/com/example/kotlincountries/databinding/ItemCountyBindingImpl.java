@@ -21,17 +21,20 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
     // variables
     // values
     // listeners
+    private OnClickListenerImpl mListenerOnCountryClickedAndroidViewViewOnClickListener;
     // Inverse Binding Event Handlers
 
     public ItemCountyBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 4, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
     }
     private ItemCountyBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (android.widget.ImageView) bindings[1]
-            , (android.widget.TextView) bindings[2]
+            , (android.widget.TextView) bindings[1]
+            , (android.widget.ImageView) bindings[2]
             , (android.widget.TextView) bindings[3]
+            , (android.widget.TextView) bindings[4]
             );
+        this.countryUuid.setTag(null);
         this.imageView.setTag(null);
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
@@ -45,7 +48,7 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x2L;
+                mDirtyFlags = 0x4L;
         }
         requestRebind();
     }
@@ -66,6 +69,9 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
         if (BR.country == variableId) {
             setCountry((com.example.kotlincountries.model.Country) variable);
         }
+        else if (BR.listener == variableId) {
+            setListener((com.example.kotlincountries.adapter.CountryClickListener) variable);
+        }
         else {
             variableSet = false;
         }
@@ -78,6 +84,14 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
             mDirtyFlags |= 0x1L;
         }
         notifyPropertyChanged(BR.country);
+        super.requestRebind();
+    }
+    public void setListener(@Nullable com.example.kotlincountries.adapter.CountryClickListener Listener) {
+        this.mListener = Listener;
+        synchronized(this) {
+            mDirtyFlags |= 0x2L;
+        }
+        notifyPropertyChanged(BR.listener);
         super.requestRebind();
     }
 
@@ -97,38 +111,75 @@ public class ItemCountyBindingImpl extends ItemCountyBinding  {
         }
         com.example.kotlincountries.model.Country country = mCountry;
         java.lang.String countryImageUrl = null;
+        android.view.View.OnClickListener listenerOnCountryClickedAndroidViewViewOnClickListener = null;
+        int CountryUuid1 = 0;
+        java.lang.String stringValueOfCountryUuid = null;
+        com.example.kotlincountries.adapter.CountryClickListener listener = mListener;
         java.lang.String countryCountryName = null;
         java.lang.String countryCountryRegion = null;
 
-        if ((dirtyFlags & 0x3L) != 0) {
+        if ((dirtyFlags & 0x5L) != 0) {
 
 
 
                 if (country != null) {
                     // read country.imageUrl
                     countryImageUrl = country.getImageUrl();
+                    // read country.uuid
+                    CountryUuid1 = country.getUuid();
                     // read country.countryName
                     countryCountryName = country.getCountryName();
                     // read country.countryRegion
                     countryCountryRegion = country.getCountryRegion();
                 }
+
+
+                // read String.valueOf(country.uuid)
+                stringValueOfCountryUuid = java.lang.String.valueOf(CountryUuid1);
+        }
+        if ((dirtyFlags & 0x6L) != 0) {
+
+
+
+                if (listener != null) {
+                    // read listener::onCountryClicked
+                    listenerOnCountryClickedAndroidViewViewOnClickListener = (((mListenerOnCountryClickedAndroidViewViewOnClickListener == null) ? (mListenerOnCountryClickedAndroidViewViewOnClickListener = new OnClickListenerImpl()) : mListenerOnCountryClickedAndroidViewViewOnClickListener).setValue(listener));
+                }
         }
         // batch finished
-        if ((dirtyFlags & 0x3L) != 0) {
+        if ((dirtyFlags & 0x5L) != 0) {
             // api target 1
 
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.countryUuid, stringValueOfCountryUuid);
             com.example.kotlincountries.util.UtilKt.downloadImage(this.imageView, countryImageUrl);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.name, countryCountryName);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.region, countryCountryRegion);
         }
+        if ((dirtyFlags & 0x6L) != 0) {
+            // api target 1
+
+            this.mboundView0.setOnClickListener(listenerOnCountryClickedAndroidViewViewOnClickListener);
+        }
     }
     // Listener Stub Implementations
+    public static class OnClickListenerImpl implements android.view.View.OnClickListener{
+        private com.example.kotlincountries.adapter.CountryClickListener value;
+        public OnClickListenerImpl setValue(com.example.kotlincountries.adapter.CountryClickListener value) {
+            this.value = value;
+            return value == null ? null : this;
+        }
+        @Override
+        public void onClick(android.view.View arg0) {
+            this.value.onCountryClicked(arg0); 
+        }
+    }
     // callback impls
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
         flag 0 (0x1L): country
-        flag 1 (0x2L): null
+        flag 1 (0x2L): listener
+        flag 2 (0x3L): null
     flag mapping end*/
     //end
 }

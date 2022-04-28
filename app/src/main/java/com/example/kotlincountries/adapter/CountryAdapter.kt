@@ -16,7 +16,7 @@ import com.example.kotlincountries.util.downloadFromUrl
 import com.example.kotlincountries.util.placeholderProgressBar
 import com.example.kotlincountries.view.FeedFragmentDirections
 
-class CountryAdapter(val countryList: ArrayList<Country>): RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter(val countryList: ArrayList<Country>): RecyclerView.Adapter<CountryAdapter.CountryViewHolder>(), CountryClickListener {
 
     class CountryViewHolder(var view: ItemCountyBinding) : RecyclerView.ViewHolder(view.root) {
 
@@ -33,6 +33,7 @@ class CountryAdapter(val countryList: ArrayList<Country>): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
 
         holder.view.country = countryList[position]
+        holder.view.listener = this
 
 /*        holder.name.text = countryList[position].countryName
         holder.region.text = countryList[position].countryRegion
@@ -54,5 +55,11 @@ class CountryAdapter(val countryList: ArrayList<Country>): RecyclerView.Adapter<
         countryList.clear()
         countryList.addAll(newCountryList)
         notifyDataSetChanged()
+    }
+
+    override fun onCountryClicked(v: View) {
+        var uuid = v.findViewById<TextView>(R.id.countryUuid).text.toString()
+        val action = FeedFragmentDirections.actionFeedFragmentToCountryFragment(Integer.parseInt(uuid))
+        Navigation.findNavController(v).navigate(action)
     }
 }

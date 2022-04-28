@@ -2065,6 +2065,7 @@ id countryList
 id countryLoading
 id countryName
 id countryRegion
+id countryUuid
 id country_navigation
 id currentState
 id custom

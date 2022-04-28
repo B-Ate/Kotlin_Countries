@@ -12,11 +12,15 @@ import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import com.example.kotlincountries.R;
+import com.example.kotlincountries.adapter.CountryClickListener;
 import com.example.kotlincountries.model.Country;
 import java.lang.Deprecated;
 import java.lang.Object;
 
 public abstract class ItemCountyBinding extends ViewDataBinding {
+  @NonNull
+  public final TextView countryUuid;
+
   @NonNull
   public final ImageView imageView;
 
@@ -29,9 +33,13 @@ public abstract class ItemCountyBinding extends ViewDataBinding {
   @Bindable
   protected Country mCountry;
 
+  @Bindable
+  protected CountryClickListener mListener;
+
   protected ItemCountyBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      ImageView imageView, TextView name, TextView region) {
+      TextView countryUuid, ImageView imageView, TextView name, TextView region) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.countryUuid = countryUuid;
     this.imageView = imageView;
     this.name = name;
     this.region = region;
@@ -42,6 +50,13 @@ public abstract class ItemCountyBinding extends ViewDataBinding {
   @Nullable
   public Country getCountry() {
     return mCountry;
+  }
+
+  public abstract void setListener(@Nullable CountryClickListener listener);
+
+  @Nullable
+  public CountryClickListener getListener() {
+    return mListener;
   }
 
   @NonNull
